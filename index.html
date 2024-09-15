@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Timer</title>
+    <style>
+        *{
+            font-family: "Anton", sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: x-large;
+        }
+        .countdown-container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(45deg,#D4145A,#FBB03B);
+            color: white;
+          
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown-container">
+        <div id="countdown-timer">
+
+        </div>
+        <div class="countdown-label">
+            until 2025
+        </div>
+        
+    </div>
+    <script>
+        const targetDate=new Date('2025-01-01T00:00:00');
+        
+        function updateTime()
+        {
+            const currentDate=new Date();
+            const timeDifference=targetDate-currentDate;
+            const days=Math.floor(timeDifference/(1000*60*60*24));
+            const hours=Math.floor((timeDifference%(1000*60*60*24))/(1000*60*60));
+            const minutes=Math.floor((timeDifference%(1000*60*60))/(1000*60));
+            const seconds=Math.floor((timeDifference%(1000*60))/1000);
+            document.getElementById('countdown-timer').innerHTML=`${days}d ${hours}h ${minutes}m ${seconds}s`
+            setTimeout(updateTime,1000);
+            
+        }
+        updateTime()
+        
+        
+       
+    </script>
+</body>
+</html>
